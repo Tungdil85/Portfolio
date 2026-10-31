@@ -1,0 +1,35 @@
+<aside class="side" [class.side--overlay]="overlay()" [class.side--hidden]="overlay() && !open()">
+  <div class="side__top">
+    <span>SP / 2026</span>
+    <div class="side__tools">
+      <button type="button" class="pill" (click)="theme.toggle()">{{ theme.toggleLabel() }}</button>
+      @if (overlay()) {
+        <button type="button" class="close" aria-label="Fermer le menu" (click)="closed.emit()">×</button>
+      }
+    </div>
+  </div>
+
+  <div class="side__intro">
+    <h1 class="side__name">{{ profile().name }}</h1>
+    <p class="side__tagline">{{ profile().tagline }}</p>
+    <p class="side__status"><span class="dot" aria-hidden="true"></span>{{ profile().availability }}</p>
+  </div>
+
+  <nav class="nav" aria-label="Navigation principale">
+    @for (item of nav(); track item.id; let i = $index) {
+      <a class="nav__link" [href]="'#' + item.id" (click)="closed.emit()">
+        <span>{{ item.label }}</span>
+        <span class="nav__num" aria-hidden="true">0{{ i + 1 }}</span>
+      </a>
+    }
+  </nav>
+
+  <div class="map" [class.map--overlay]="overlay()">
+    <app-hex-grid />
+  </div>
+
+  <div class="side__cta">
+    <a class="cta cta--solid" href="#contact" (click)="closed.emit()">Me contacter</a>
+    <a class="cta cta--ghost" [href]="profile().cvUrl" download="CV-Simon-Prouteau.pdf">CV (PDF) ↓</a>
+  </div>
+</aside>

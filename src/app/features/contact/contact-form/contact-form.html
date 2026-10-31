@@ -1,0 +1,47 @@
+<form class="form" (submit)="submit($event)">
+  <div class="form__head">
+    <h3 class="form__title">Prise de contact</h3>
+    <p class="form__hint">Réponse sous 48 h</p>
+  </div>
+
+  <label class="field">
+    <span>Nom</span>
+    <input name="name" type="text" autocomplete="name" required placeholder="Votre nom" />
+  </label>
+
+  <label class="field">
+    <span>Email</span>
+    <input name="email" type="email" autocomplete="email" required placeholder="vous@entreprise.fr" />
+  </label>
+
+  <fieldset class="form__needs">
+    <legend>Type de besoin</legend>
+    <div class="form__chips">
+      @for (label of needs; track label) {
+        <button
+          type="button"
+          class="chip"
+          [class.chip--on]="need() === label"
+          [attr.aria-pressed]="need() === label"
+          (click)="pick(label)"
+        >
+          {{ label }}
+        </button>
+      }
+    </div>
+  </fieldset>
+
+  <label class="field field--full">
+    <span>Votre projet</span>
+    <textarea name="message" rows="5" required placeholder="Contexte, objectifs, délais…"></textarea>
+  </label>
+
+  <div class="form__foot">
+    <p class="form__status" role="status">
+      @if (sent()) {
+        Merci ! Votre messagerie s’ouvre avec le message prêt à partir.
+      }
+    </p>
+    <button type="submit" class="form__submit">Envoyer le message →</button>
+  </div>
+</form>

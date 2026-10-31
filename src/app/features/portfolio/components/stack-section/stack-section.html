@@ -1,0 +1,11 @@
+<section id="stack" class="stack" aria-label="Stack">
+  <app-section-heading title="Stack" index="04" />
+  <dl class="stack__list">
+    @for (group of groups(); track group.category) {
+      <div class="stack__row">
+        <dt class="stack__cat">{{ group.category }}</dt>
+        <dd class="stack__items">{{ group.items }}</dd>
+      </div>
+    }
+  </dl>
+</section>

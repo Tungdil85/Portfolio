@@ -1,0 +1,37 @@
+<div class="layout">
+  @if (!viewport.wide()) {
+    <app-mobile-header (menuOpened)="menuOpen.set(true)" />
+  }
+
+  <app-site-sidebar
+    [profile]="content.profile"
+    [nav]="content.nav"
+    [open]="menuOpen()"
+    (closed)="menuOpen.set(false)"
+  />
+
+  <main class="main">
+    <app-offers-section [intro]="content.intro" [phrases]="content.phrases" [offers]="content.offers" />
+    <app-projects-section [projects]="content.projects" />
+    <app-side-projects-section
+      [featured]="content.sideProject"
+      [linked]="content.linkedProject"
+      [githubUrl]="content.githubUrl"
+    />
+    <app-stack-section [groups]="content.stack" />
+    <app-experience-section [experiences]="content.experiences" />
+
+    <section id="contact" class="contact" aria-label="Contact">
+      <h2 class="contact__title">Parlons de votre projet.</h2>
+      <app-contact-form />
+      <footer class="contact__foot">
+        <div class="contact__links">
+          <a [href]="content.githubUrl" target="_blank" rel="noopener">GitHub</a>
+          <a [href]="content.linkedinUrl" target="_blank" rel="noopener">LinkedIn</a>
+          <a [href]="content.profile.cvUrl" download="CV-Simon-Prouteau.pdf">CV.pdf</a>
+        </div>
+        <span>© 2026 {{ content.profile.name }}</span>
+      </footer>
+    </section>
+  </main>
+</div>

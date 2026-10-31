@@ -1,0 +1,31 @@
+<section id="marchlords" class="side" aria-label="Projets perso">
+  <app-section-heading title="Projets perso" index="03" />
+
+  <div class="featured">
+    <div class="featured__main">
+      <p class="featured__period">{{ featured().period }}</p>
+      <h3 class="featured__name">{{ featured().name }}</h3>
+      <p class="featured__desc">{{ featured().description }}</p>
+      <div class="featured__actions">
+        <a class="btn btn--brand" [href]="featured().url" target="_blank" rel="noopener">
+          {{ featured().url.replace('https://', '') }} ↗
+        </a>
+        <a class="btn btn--ghost" [href]="githubUrl()" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <ul class="featured__points">
+      @for (point of featured().points; track point) {
+        <li>{{ point }}</li>
+      }
+    </ul>
+  </div>
+
+  <a class="linked" [href]="linked().url" target="_blank" rel="noopener">
+    <div class="linked__head">
+      <h3 class="linked__name">{{ linked().name }}</h3>
+      <span class="linked__url">{{ linked().displayUrl }}</span>
+    </div>
+    <p class="linked__desc">{{ linked().description }}</p>
+    <span class="linked__cta">voir le site ↗</span>
+  </a>
+</section>

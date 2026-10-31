@@ -1,0 +1,14 @@
+<section id="parcours" class="xp" aria-label="Parcours">
+  <app-section-heading title="Parcours" index="05" />
+  <ol class="xp__list">
+    @for (xp of experiences(); track xp.period + xp.company) {
+      <li class="xp__item">
+        <span class="xp__dot" aria-hidden="true"></span>
+        <p class="xp__period">{{ xp.period }}</p>
+        <h3 class="xp__role">{{ xp.role }} — {{ xp.company }}</h3>
+        <p class="xp__place">{{ xp.place }}</p>
+        <p class="xp__desc">{{ xp.description }}</p>
+      </li>
+    }
+  </ol>
+</section>

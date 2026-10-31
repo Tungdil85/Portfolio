@@ -1,0 +1,19 @@
+<section id="projets" class="projects" aria-label="Projets pro">
+  <app-section-heading title="Projets pro" index="02" />
+  <ul class="projects__grid">
+    @for (project of projects(); track project.name) {
+      <li class="project">
+        <div class="project__shot" role="img" [attr.aria-label]="'Capture à venir : ' + project.name">
+          [ capture — {{ project.name }} ]
+        </div>
+        <div class="project__meta">
+          <span>{{ project.client }}</span>
+          <span>{{ project.year }}</span>
+        </div>
+        <h3 class="project__name">{{ project.name }}</h3>
+        <p class="project__desc">{{ project.description }}</p>
+        <p class="project__tech">{{ project.tech }}</p>
+      </li>
+    }
+  </ul>
+</section>

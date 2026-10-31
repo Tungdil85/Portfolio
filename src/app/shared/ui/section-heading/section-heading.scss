@@ -1,0 +1,20 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+
+  &__title {
+    margin: 0;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+  }
+
+  &__index {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--mut);
+  }
+}

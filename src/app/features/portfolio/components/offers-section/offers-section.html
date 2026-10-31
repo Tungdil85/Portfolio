@@ -1,0 +1,15 @@
+<section id="offre" class="offers" aria-labelledby="offre-title">
+  <h2 id="offre-title" class="offers__intro">
+    {{ intro() }}
+    <app-typewriter class="offers__typed" [phrases]="phrases()" />
+  </h2>
+  <ul class="offers__grid">
+    @for (offer of offers(); track offer.title; let i = $index) {
+      <li class="offer">
+        <span class="offer__num" aria-hidden="true">0{{ i + 1 }}</span>
+        <h3 class="offer__title">{{ offer.title }}</h3>
+        <p class="offer__desc">{{ offer.description }}</p>
+      </li>
+    }
+  </ul>
+</section>
